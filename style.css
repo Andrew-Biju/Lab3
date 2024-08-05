@@ -1,0 +1,105 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: url('images/background-image.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px 25px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    position: relative;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    display: flex;
+    align-items: center;
+    color: #5F5F5D;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a svg {
+    margin-right: 8px; 
+    width: 20px; 
+    height: 20px; 
+}
+
+nav ul li a:hover {
+    color: white; 
+}
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px; 
+}
+.map-container {
+    flex: 1;
+    max-width: 800px; 
+    text-align: right;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 350px; 
+    border: 0;
+}
+
+main {
+    text-align: center;
+    padding: 100px 20px;
+}
+
+@media (max-width: 767px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    nav ul li a {
+        font-size: 16px;
+    }
+
+    main {
+        padding: 60px 10px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    nav ul {
+        flex-direction: row;
+    }
+
+    nav ul li {
+        margin: 0 10px;
+    }
+
+    nav ul li a {
+        font-size: 17px;
+    }
+
+    main {
+        padding: 80px 15px;
+    }
+}

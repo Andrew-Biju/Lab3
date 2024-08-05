@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    <link rel="stylesheet" href="sugg_style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="index.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door" viewBox="0 0 16 16">
+                            <path d="M8.354 1.146a.5.5 0 0 1 .292.087l6 4.5A.5.5 0 0 1 14.5 6H13v7.5a.5.5 0 0 1-.5.5H10a.5.5 0 0 1-.5-.5V11H6v2.5a.5.5 0 0 1-.5.5H3.5a.5.5 0 0 1-.5-.5V6H1.5a.5.5 0 0 1-.354-.854l6-4.5a.5.5 0 0 1 .708 0z"/>
+                        </svg>
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="history.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-history" viewBox="0 0 16 16">
+                            <path d="M8.515 1.379a7 7 0 1 0 4.687 12.046.5.5 0 0 1 .694.719 8 8 0 1 1-5.488-14.056A.5.5 0 0 1 8.515 1.38z"/>
+                            <path d="M7.5 2a.5.5 0 0 1 1 0v5h3a.5.5 0 0 1 0 1H8V2z"/>
+                        </svg>
+                        History
+                    </a>
+                </li>
+                <li>
+                    <a href="gallery.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-images" viewBox="0 0 16 16">
+                            <path d="M4.502 1a.5.5 0 0 0-.5.5v11.972a.5.5 0 0 0 .5.5h7.971a.5.5 0 0 0 .5-.5V1.5a.5.5 0 0 0-.5-.5H4.502zm-.5-.5A1 1 0 0 1 4.502 0h7.971a1 1 0 0 1 1 1v11.972a1 1 0 0 1-1 1H4.502a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1z"/>
+                            <path d="M6 2h3v2H6V2zm3 3H6v1h3V5zm-3 2h3v1H6V7zm5 2h-3v1h3V9z"/>
+                        </svg>
+                        Gallery
+                    </a>
+                </li>
+                <li>
+                    <a href="sugg.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat" viewBox="0 0 16 16">
+                            <path d="M8 1a7 7 0 1 0 0 14H6a.5.5 0 0 0 0 1h2a8 8 0 1 1 0-16H8z"/>
+                            <path d="M3.229 5.267a.5.5 0 0 1 .62.258c.272.578.687 1.056 1.18 1.444C5.78 7.7 6.743 8.015 7.5 8.253V6.5a.5.5 0 0 1 1 0v1.753c.757-.238 1.72-.553 2.471-1.284.493-.388.908-.866 1.18-1.444a.5.5 0 0 1 .878.52A6.986 6.986 0 0 1 8 10a6.986 6.986 0 0 1-5.748-2.96.5.5 0 0 1 .258-.62L3.23 5.267z"/>
+                        </svg>
+                        Feedback
+                    </a>
+                </li>
+                <li>
+                    <a href="legend.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                            <path d="M8 1a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM6 6a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm6 8c0-3-1.5-4-4-4s-4 1-4 4H2c0-3.5 2-5.5 6-5.5s6 2 6 5.5h-2z"/>
+                        </svg>
+                        Contact Us
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="suggestions">
+            <h1>Suggestions</h1>
+            <p>We value your feedback and suggestions. Please fill out the form below to share your ideas with us.</p>
+            <form action="submit_suggestion.php" method="post">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="suggestion">Suggestion:</label>
+                    <textarea id="suggestion" name="suggestion" rows="6" required></textarea>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>© 2024 Real Madrid Fan Page</p>
+    </footer>
+</body>
+</html>
