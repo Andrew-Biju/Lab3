@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    
+    <title>Services</title>
+    <style>
+       body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background: url('images/background-image.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+}
+
+header {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px 25px;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+header nav ul li {
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    color: #5F5F5D;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+header nav ul li a svg {
+    margin-right: 8px; 
+    width: 20px; 
+    height: 20px; 
+}
+
+header nav ul li a:hover {
+    color: white; 
+}
+
+.container {
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 20px;
+    color: black;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2, p {
+    margin-bottom: 20px;
+}
+
+.inner-content h2 {
+    color: #333;
+}
+
+#clickme {
+    background-color: gray;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#clickme:hover {
+    background-color: #555;
+}
+
+.alert {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    background-color: red;
+    color: white;
+}
+
+.d-none {
+    display: none;
+}
+
+#map {
+    width: 90%;
+    height: 80vh;
+    border: 0;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+footer {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+}
+
+@media (max-width: 767px) {
+    header nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    header nav ul li {
+        margin: 10px 0;
+    }
+
+    header nav ul li a {
+        font-size: 16px;
+    }
+
+    .container {
+        padding: 20px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    header nav ul {
+        flex-direction: row;
+    }
+
+    header nav ul li {
+        margin: 0 10px;
+    }
+
+    header nav ul li a {
+        font-size: 17px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="home.html"><object type="image/svg+xml" data="images/home_logo.svg" class="logo">Logo</object>Home</a></li>
+                <li><a href="events.html"><object type="image/svg+xml" data="images/event_logo.svg" class="logo">Logo</object>Events</a></li>
+                <li><a href="services.html"><object type="image/svg+xml" data="images/service_logo.svg" class="logo">Logo</object>Services</a></li>
+                <li><a href="about.html"><object type="image/svg+xml" data="images/contact_logo.svg" class="logo">Logo</object>About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="container">
+        <div class="inner-content">
+            <h2>Explore Events near you</h2>
+            <p>Give us your location access so that we may let you know the events happening near you.</p>
+            <a href="#map"><button id="clickme">Go To Map</button></a>
+            <p>Caution: This would redirect you to Google Maps</p>
+        </div>
+        <h1>Your Coordinates</h1>
+        <p>Timestamp: <span id="timestamp"></span></p>
+        <p>Latitude : <span id="latitude"></span></p>
+        <p>Longitude: <span id="longitude"></span></p>
+        <p>Accuracy : <span id="accuracy"></span></p>
+        <p>Altitude: <span id="altitude"></span></p>
+        <p>Altitude Accuracy: <span id="altiaccuracy"></span></p>
+        <p>Heading : <span id="heading"></span></p>
+        <p>Speed: <span id="speed"></span></p>
+        <div id="errorArea" class="alert d-none"></div>
+        <div id="map"></div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Flare Bash. All rights reserved.</p>
+    </footer>
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCAw11zfrUWEbgR3koPKiZ-hH89GjDxWzY" async defer></script>
+    <script>
+        let map;
+        let marker;
+
+        function initMap() {
+            const defaultLocation = { lat: -33.8688, lng: 151.2093 }; // Example: Sydney
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 13,
+                center: defaultLocation,
+            });
+            marker = new google.maps.Marker({
+                position: defaultLocation,
+                map: map,
+            });
+        }
+
+        document.getElementById('clickme').addEventListener('click', event => {
+            if ('geolocation' in navigator) {
+                navigator.geolocation.getCurrentPosition(pos => {
+                    const coords = pos.coords;
+                    document.getElementById('timestamp').innerText = new Date(pos.timestamp);
+                    document.getElementById('latitude').innerText = coords.latitude;
+                    document.getElementById('longitude').innerText = coords.longitude;
+                    document.getElementById('accuracy').innerText = coords.accuracy;
+                    document.getElementById('altitude').innerText = coords.altitude || 'N/A';
+                    document.getElementById('altiaccuracy').innerText = coords.altitudeAccuracy || 'N/A';
+                    document.getElementById('heading').innerText = coords.heading;
+                    document.getElementById('speed').innerText = coords.speed;
+
+                    const userLocation = { lat: coords.latitude, lng: coords.longitude };
+                    map.setCenter(userLocation);
+                    map.setZoom(13);
+                    marker.setPosition(userLocation);
+                    marker.setMap(map);
+                    marker.setTitle('You are here');
+                }, error => {
+                    let msg = '';
+                    switch (error.code) {
+                        case error.PERMISSION_DENIED:
+                            msg = 'User Denied Permission';
+                            break;
+                        case error.POSITION_UNAVAILABLE:
+                            msg = 'Can\'t Locate User\'s Position';
+                            break;
+                        case error.TIMEOUT:
+                            msg = 'Time out';
+                            break;
+                    }
+                    const errorArea = document.getElementById('errorArea');
+                    errorArea.innerHTML = msg;
+                    errorArea.classList.remove('d-none');
+                });
+            } else {
+                console.log('Update your browser to get Geolocation Object');
+            }
+        });
+
+        window.onload = initMap;
+    </script>
+</body>
+</html>
